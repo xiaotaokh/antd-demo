@@ -8,7 +8,12 @@
             <a-button type="primary">按钮</a-button>
         </a-config-provider>
         <a-button type="link">Link</a-button>
-        <div :style="{ padding: '8px 8px 0 8px', background: 'rgb(190, 200, 200)' }">
+        <div
+            :style="{
+                padding: '8px 8px 0 8px',
+                background: 'rgb(190, 200, 200)',
+            }"
+        >
             <a-button ghost>Ghost</a-button>
             <a-button ghost disabled>Ghost(disabled)</a-button>
         </div>
@@ -27,7 +32,8 @@
         <a-button type="primary" block>Primary</a-button>
         <a-button-group>
             <a-button type="primary" disabled>
-                <a-icon type="left" />Go back
+                <a-icon type="left" />
+                Go back
             </a-button>
             <a-button type="primary">
                 Go forward
@@ -35,14 +41,29 @@
             </a-button>
         </a-button-group>
         <a-button type="primary" loading ghost>Primary</a-button>
-        <a-button type="primary" :loading="iconLoading" @click="enterIconLoading">Button</a-button>
+        <a-button
+            type="primary"
+            :loading="iconLoading"
+            @click="enterIconLoading"
+            >Button</a-button
+        >
         <a-button type="htmlType">Button</a-button>
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
-        <a-icon type="home" :style="{fontSize: '28px'}" theme="filled" />
-        <a-icon type="home" :style="{fontSize: '28px'}" :rotate="180" theme="outlined" />
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+            }"
+        ></p>
+        <a-icon type="home" :style="{ fontSize: '28px' }" theme="filled" />
         <a-icon
             type="home"
-            :style="{fontSize: '28px'}"
+            :style="{ fontSize: '28px' }"
+            :rotate="180"
+            theme="outlined"
+        />
+        <a-icon
+            type="home"
+            :style="{ fontSize: '28px' }"
             theme="twoTone"
             twoToneColor="#3acedb"
             spin
@@ -50,7 +71,12 @@
         <a-icon type="down-circle" />
         <a-icon type="setting" theme="filled" />
         <a-icon type="loading" />
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+            }"
+        ></p>
         <a-row type="flex" justify="center" align="top">
             <a-col :span="4" :order="4">
                 <p class="height-100">col-1</p>
@@ -67,10 +93,26 @@
         </a-row>
         <a-row type="flex">
             <a-col flex="100px">
-                <p :style="{width: '100px', height: '100px', background: 'blue'}">100px</p>
+                <p
+                    :style="{
+                        width: '100px',
+                        height: '100px',
+                        background: 'blue',
+                    }"
+                >
+                    100px
+                </p>
             </a-col>
             <a-col flex="auto">
-                <p :style="{width: '100%', height: '100px', background: 'cyan'}">auto</p>
+                <p
+                    :style="{
+                        width: '100%',
+                        height: '100px',
+                        background: 'cyan',
+                    }"
+                >
+                    auto
+                </p>
             </a-col>
         </a-row>
         <a-row>
@@ -135,16 +177,68 @@
                             </a-sub-menu>
                         </a-menu>
                     </a-layout-sider>
-                    <a-layout-content :style="{ padding: '0 24px', minHeight: '280px' }">Content</a-layout-content>
+                    <a-layout-content
+                        :style="{ padding: '0 24px', minHeight: '280px' }"
+                        >Content</a-layout-content
+                    >
                 </a-layout>
             </a-layout-content>
-            <a-layout-footer style="text-align: center">Ant Design ©2018 Created by Ant UED</a-layout-footer>
+            <a-layout-footer style="text-align: center"
+                >Ant Design ©2018 Created by Ant UED</a-layout-footer
+            >
         </a-layout>
-
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
-        <p :style="{'border-bottom': '1px dashed #333', 'padding-top': '20px'}"></p>
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+            }"
+        ></p>
+        <a-affix :offset-bottom="10">
+            <a-button type="primary"> Affix top </a-button>
+        </a-affix>
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+            }"
+        ></p>
+        <a-breadcrumb>
+            <span slot="separator" style="color: red">>>></span>
+            <a-breadcrumb-item>Home</a-breadcrumb-item>
+            <a-breadcrumb-item
+                ><a href="">Application Center</a></a-breadcrumb-item
+            >
+            <a-breadcrumb-item href=""
+                ><a-icon type="user"
+            /></a-breadcrumb-item>
+            <a-breadcrumb-item>An Application</a-breadcrumb-item>
+        </a-breadcrumb>
+        <a-breadcrumb :routes="routes">
+            <template
+                slot="itemRender"
+                slot-scope="{ route, params, routes, paths }"
+            >
+                <span v-if="routes.indexOf(route) === routes.length - 1">
+                    {{ route.breadcrumbName }}
+                </span>
+                <router-link v-else :to="`${basePath}/${paths.join('/')}`">
+                    {{ route.breadcrumbName }}
+                </router-link>
+            </template>
+        </a-breadcrumb>
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+            }"
+        ></p>
+        <p
+            :style="{
+                'border-bottom': '1px dashed #333',
+                'padding-top': '20px',
+                'margin-bottom': '1200px',
+            }"
+        ></p>
     </div>
 </template>
 
@@ -154,14 +248,46 @@ export default {
     props: {},
     data() {
         return {
-            iconLoading: false
+            iconLoading: false,
+            basePath: "/components/breadcrumb",
+            routes: [
+                {
+                    path: "index",
+                    breadcrumbName: "home",
+                },
+                {
+                    path: "first",
+                    breadcrumbName: "first",
+                    children: [
+                        {
+                            path: "/general",
+                            breadcrumbName: "General",
+                        },
+                        {
+                            path: "/layout",
+                            breadcrumbName: "Layout",
+                        },
+                        {
+                            path: "/navigation",
+                            breadcrumbName: "Navigation",
+                        },
+                    ],
+                },
+                {
+                    path: "second",
+                    breadcrumbName: "second",
+                },
+            ],
         };
+    },
+    created() {
+        
     },
     methods: {
         enterIconLoading() {
             this.iconLoading = { delay: 1000 };
-        }
-    }
+        },
+    },
 };
 </script>
 
@@ -169,18 +295,21 @@ export default {
 <style scoped lang="less">
 .hello {
     padding: 20px;
+
     .height-100 {
         width: 100%;
         height: 100px;
         line-height: 100px;
         background: #ccc;
     }
+
     .height-50 {
         width: 100%;
         height: 50px;
         line-height: 50px;
         background: #eee;
     }
+
     #components-layout-demo-top-side .logo {
         width: 120px;
         height: 31px;
